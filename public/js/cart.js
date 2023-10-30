@@ -18,6 +18,9 @@ function calcularTotal(products) {
 }
 
 let cartRows = document.querySelector('.cartRows');
+
+let products =[];
+
 if (localStorage.carrito) {
   let carrito = JSON.parse(localStorage.carrito);
   console.log(carrito);
@@ -42,6 +45,7 @@ if (localStorage.carrito) {
           carrito.splice(index, 1)
           localStorage.setItem('carrito', JSON.stringify(carrito));
         }        
-      });
+      }).then(document.querySelector('.totalAmount').innerText = `$ calcularTotal()`
+      );
   });
 };
