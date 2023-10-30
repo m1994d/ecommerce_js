@@ -1,3 +1,8 @@
+function productosEnElCarrito() {
+  return localStorage.carrito ? JSON.parse(localStorage.carrito).length:0;
+
+}
+
 window.addEventListener("load", function () {
   /*  Animations initialization */
   new WOW().init();
@@ -12,6 +17,7 @@ window.addEventListener("load", function () {
   };
 
   let botonesComprar = document.querySelectorAll(".agregar_carrito");
+  let cartNumber = document.querySelector(".cart-number");
 
   botonesComprar.forEach((boton)=> {
     //escuchar el clic
@@ -34,6 +40,7 @@ window.addEventListener("load", function () {
         );
       }
       toastr.success('Se agregó este producto al carrito');
+      cartNumber.innerText = productosEnElCarrito();
     });
   });
 });
