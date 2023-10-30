@@ -11,7 +11,7 @@ window.addEventListener("load", function () {
     extendedTimeOut: 1000,
   };
 
-  let botonesComprar = document.querySelectorAll(".agregar_carrito")
+  let botonesComprar = document.querySelectorAll(".agregar_carrito");
 
   botonesComprar.forEach((boton)=> {
     //escuchar el clic
@@ -21,18 +21,19 @@ window.addEventListener("load", function () {
         let carrito = JSON.parse(localStorage.carrito);
 
         let index = carrito.findIndex((prod) => prod.id == e.target.dataset.id);
-        if (index == -1) {
+        if(index != -1){
           carrito[index].quantity++;
-        } else {
-          carrito.push({id: e.target.dataset.id, quantity: 1});
+        }else {
+          carrito.push({ id: e.target.dataset.id, quantity: 1})
         }
         localStorage.setItem('carrito', JSON.stringify(carrito));
-        
+
       } else {
         localStorage.setItem("carrito",
         JSON.stringify([{ id: e.target.dataset.id,quantity: 1}])
         );
       }
+      toastr.success('Se agregó este producto al carrito');
     });
   });
 });
