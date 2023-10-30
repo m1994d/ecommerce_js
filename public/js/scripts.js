@@ -18,6 +18,7 @@ window.addEventListener("load", function () {
 
   let botonesComprar = document.querySelectorAll(".agregar_carrito");
   let cartNumber = document.querySelector(".cart-number");
+  cartNumber.innerText = productosEnElCarrito();
 
   botonesComprar.forEach((boton)=> {
     //escuchar el clic

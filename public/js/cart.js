@@ -5,6 +5,7 @@ function setCarritoVacio() {
     </tr>            
     `;
 }
+
 function vaciarCarrito() {
   localStorage.removeItem("carrito");
 }
@@ -15,3 +16,16 @@ function calcularTotal(products) {
     0
   );
 }
+
+
+if (localStorage.carrito) {
+  let carrito = JSON.parse(localStorage.carrito);
+  console.log(carrito);
+  carritp.forEach((item, index) => {
+    fetch('/api/product/${item.id}')
+      .then((res) => res.json())
+      .then((product) => {
+        console.log(product);
+      });
+  });
+};
