@@ -17,15 +17,24 @@ function calcularTotal(products) {
   );
 }
 
-
+let cartRows = document.querySelector('.cartRows');
 if (localStorage.carrito) {
   let carrito = JSON.parse(localStorage.carrito);
   console.log(carrito);
   carrito.forEach((item, index) => {
-    fetch('/api/product/${item.id}')
+    fetch(`/api/product/${item.id}`)
       .then((res) => res.json())
       .then((product) => {
-        console.log(product);
+        cartRows.innerHTML += `
+        <tr id="row${index}">
+          <th scope="row">${index + 1}</th>
+          <td>${product.name}</td>
+          <td>${product.price}</td>
+          <td class="text-center">${item.quantity}</td>
+          <td class="text-center">$ ${parseFloat(product.price * item.quantity).toFixed(2)}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="removeItem(${index})"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>
+        `;        
       });
   });
 };
