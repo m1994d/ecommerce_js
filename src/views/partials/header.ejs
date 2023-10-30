@@ -1,0 +1,79 @@
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="/">
+            <strong class="blue-text">Rosa Dorada Store</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item <%= locals.active == '' ? 'active':'' %> ">
+                    <a class="nav-link waves-effect" href="/">Inicio
+                        <% if (locals.active=='/' ) { %>
+
+                            <span class="sr-only">(current)</span>
+                            <% } %>
+                    </a>
+                </li>
+                <li class="nav-item <%= locals.active == 'products' ? 'active':'' %>">
+                    <a class="nav-link waves-effect" href="/products">Productos</a>
+                    <% if (locals.active=='products' ) { %>
+
+                        <span class="sr-only">(current)</span>
+                        <% } %>
+                </li>
+
+                <% if (locals.userFound) { %>
+                    <li class="nav-item  <%= locals.active == 'profile' ? 'active':'' %>">
+                        <a class="nav-link waves-effect" href="/profile">Mi Cuenta </a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="/logout" method="POST">
+                            <button class="btn-link btn py-2 px-3 m-0 nav-link waves-effect"><i
+                                    class="fas fa-sign-out-alt"></i></button>
+                        </form>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="/login">Ingreso</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="/register">Registro</a>
+                        </li>
+                        <% } %>
+            </ul>
+
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect mr-2 pr-4" href="/cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="clearfix d-none d-sm-inline-block"> Carrito </span>
+                        <span class="badge red z-depth-1 mr-1 cart-number">0</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="https://github.com/m1994d"
+                        class="nav-link border border-light rounded waves-effect" target="_blank">
+                        <i class="fab fa-github mr-2"></i>GitHub Developer
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<!-- Navbar -->

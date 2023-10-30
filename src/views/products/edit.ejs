@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/products.css">
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+    <main class="my-5 py-4">
+      <div class="container wow fadeIn animated">
+        <h2 class="my-5 h2 text-center">Editar Producto</h2>
+        <div class="row mb-5">
+          <div class="col-md-8 mx-auto">
+            <div class="card shadow my-4">
+              <form class="card-body" action="/products/<%= product.id %>?_method=put" method="POST"
+                enctype="multipart/form-data">
+                <div class="md-form">
+                  <input type="text" name="name" id="name" class="form-control" value="<%= product.name %>">
+                  <label for="name">Nombre</label>
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="number" step="0.01" name="price" id="price" class="form-control"
+                    value="<%= product.price %>">
+                  <label for="price">Precio</label>
+                </div>
+                <div class="custom-file mb-4">
+                  <input type="file" class="custom-file-input" name="img" id="img" aria-describedby="inputImage"
+                    lang="es">
+                  <label class="custom-file-label" for="img">Elegir Foto</label>
+                </div>
+                <div class="custom-control custom-checkbox mb-4">
+                  <input type="checkbox" class="custom-control-input" id="marked" name="marked" <%=product.marked
+                    ? 'checked' :'' %>>
+                  <label class="custom-control-label" for="marked">Marcar?</label>
+                </div>
+                <button class="btn btn-primary  waves-effect" type="submit">Guardar</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+      <%- include('../partials/scripts') %>
+</body>
+
+</html>

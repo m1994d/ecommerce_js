@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+  <%- include('./partials/header') %>
+
+    <%- include('./partials/carousel') %>
+
+
+      <!--Main layout-->
+      <main>
+        <div class="container mt-5">
+
+
+          <!--Section: Products v.3-->
+          <section class="text-center mb-4">
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+              <% products.forEach( prod=> { %>
+                <%- include('./partials/product' ,{prod}) %>
+
+                  <% } ) %>
+
+            </div>
+            <!--Grid row-->
+
+
+
+          </section>
+
+
+        </div>
+      </main>
+      <!--Main layout-->
+
+      <%- include('./partials/footer') %>
+
+        <%- include('./partials/scripts') %>
+
+</body>
+
+</html>

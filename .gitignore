@@ -1,0 +1,6 @@
+node_modules/
+yarn.lock
+arch_files/
+template/
+public/img/products
+.env
