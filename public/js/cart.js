@@ -40,12 +40,19 @@ if (localStorage.carrito) {
           <td><button class="btn btn-danger btn-sm" onclick="removeItem(${index})"><i class="fas fa-trash-alt"></i></button></td>
         </tr>
         `;
+        product.push({
+          productId: product.id,
+          name: product.name,
+          price: product.price,
+          quantity: product.quantity,
+        });
+        
         } else {
           /* Si no esta en el carrito, lo borro del localStorage */
           carrito.splice(index, 1)
           localStorage.setItem('carrito', JSON.stringify(carrito));
         }        
-      }).then(document.querySelector('.totalAmount').innerText = `$ calcularTotal()`
+      }).then((document.querySelector('.totalAmount').innerText = `$ ${calcularTotal()}`)
       );
   });
 };
