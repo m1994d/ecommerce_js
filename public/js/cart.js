@@ -21,7 +21,7 @@ function calcularTotal(products) {
 if (localStorage.carrito) {
   let carrito = JSON.parse(localStorage.carrito);
   console.log(carrito);
-  carritp.forEach((item, index) => {
+  carrito.forEach((item, index) => {
     fetch('/api/product/${item.id}')
       .then((res) => res.json())
       .then((product) => {
