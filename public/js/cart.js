@@ -25,6 +25,8 @@ if (localStorage.carrito) {
     fetch(`/api/product/${item.id}`)
       .then((res) => res.json())
       .then((product) => {
+        if (product){
+          
         cartRows.innerHTML += `
         <tr id="row${index}">
           <th scope="row">${index + 1}</th>
@@ -34,7 +36,12 @@ if (localStorage.carrito) {
           <td class="text-center">$ ${parseFloat(product.price * item.quantity).toFixed(2)}</td>
           <td><button class="btn btn-danger btn-sm" onclick="removeItem(${index})"><i class="fas fa-trash-alt"></i></button></td>
         </tr>
-        `;        
+        `;
+        } else {
+          /* Si no esta en el carrito, lo borro del localStorage */
+          carrito.splice(index, 1)
+          localStorage.setItem('carrito', JSON.stringify(carrito));
+        }        
       });
   });
 };
