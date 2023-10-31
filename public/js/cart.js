@@ -23,7 +23,7 @@ let products =[];
 
 if (localStorage.carrito) {
   let carrito = JSON.parse(localStorage.carrito);
-  console.log(carrito);
+  //console.log(carrito);
   carrito.forEach((item, index) => {
     fetch(`/api/product/${item.id}`)
       .then((res) => res.json())
@@ -56,3 +56,15 @@ if (localStorage.carrito) {
     });
   });
 }
+
+let checkoutCart = document.querySelector('#checkoutCart');
+
+checkoutCart.onsubmit = (e) => {
+  e.preventDefault();
+  const formData = {
+    paymentMethod: checkoutCart.paymentMethod.value,
+    shippingMethod: checkoutCart.shippingMethod.value,
+    total: calcularTotal(products),
+  };
+  console.log(formData);
+};
