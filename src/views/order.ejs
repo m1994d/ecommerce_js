@@ -56,7 +56,7 @@
                             </tbody>
                         </table>
                         <div class="card-footer text-right">
-                            <h2>Total: <span class="totalAmount">$ 0</span></h2>
+                            <h2>Total: <span class="totalAmount">$ <%= order.total %></span></h2>
                         </div>
                     </div>
                 </div>
@@ -67,10 +67,10 @@
                     <form class="card-body" id="checkoutCart">
                         <div class="row">
                             <div class=" col-md-6 mb-4">
-                                <p><strong>Tipo Envio:</strong></p>
+                                <p><strong>Tipo Envio: <%= order.shippingMethod %></strong></p>
                             </div>
                             <div class=" col-md-6 mb-4">
-                                <p><strong>Pago:</strong></p>
+                                <p><strong>Pago: <%= order.paymentMethod %></strong></p>
                             </div>
                         </div>
                     </form>
